@@ -1,2 +1,2 @@
-# Front-End-Challenge-Alura
- Repositório criado para fazer uma página de editor de código usando HTML, CSS e JAVASCRIPT
+# Alura-Challenge-FrontEnd
+Semana 1 -  Challenge Editor de Texto 

@@ -1,99 +1,136 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Editor de Texto | AluraDEV</title>
-
-        <link rel="stylesheet" href="css/home.css">
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/comunidade.css">
-        <link rel="stylesheet" href="Comunidade.html">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-</head>
-
-    <body>
-        <header>
-            <div class="cabecalho">
-                <img class="logo-cabecalho" src="./img/logo-plataforma.png">
-
-                <div id="caixa-de-busca">
-                    <input type="search" id="busca" placeholder="Busque por algo">
-                </div>
-
-                <div class="user-foto">
-                    <img class ="userfoto-cabecalho" src="./img/foto-perfil.jpg">
-                    <span>Mrs. Luana</span>
-                 </div>
-            </div>
-        </header>
-
-        <main class="corpo-site">
-            <nav class="menu-pesquisa">
-                <h1 class="titulo-principal">Menu</h1>
-
-                <ul>
-                    <a class="link-navegacao" href="./index.html">
-                        <div class="icones-menu">
-                            <img src="./img/code-editor-icon.svg" class="icone">
-                        </div>Editor de código</a>
-
-                        <a class="link-navegacao" href="./Comunidade.html">
-                            <div class="icones-menu">
-                                <img src="./img/community-icon.svg" class=users">
-                            </div>Comunidade</a>
-                </ul>
-            </nav>
-
-            <div class="meio-pagina">
-            <div class="editor-texto">
-            <div class="botoes">
-                    <button class="button-red"></button>
-                    <button class="button-yellow"></button>
-                    <button class="button-green"></button>
-                </div>
-            <textarea class="interior-editor-texto" placeholder="Escreva seu codigo aqui">
-                
-            const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-                const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-                
-                const unfold = (f, seed) => {
-                  const go = (f, seed, acc) => {
-                    const res = f(seed)
-                    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-                  }
-                  return go(f, seed, [])
-                }
-            </textarea>
-            </div>
-            <button class="botao-highlight">Visualizar com o seu highlight</button>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de Texto | Alura Dev</title>
 
 
-            <form class="menu-projeto">
-                <div class="meu-projeto">
-                    <h2 class="titulo-sidebar">Seu projeto</h2>
-                    <input type="text" id="nome-projeto" placeholder="Nome do meu projeto">
-                    <input type="text" id="descricao-projeto" placeholder="Descrição do projeto">
-                </div>
-                <div class="personalizacao">
-                    <h3 class="titulo-sidebar">Personalização</h3>
-                    <select class="dropdown-selection">
-                        <option>Javascript</option>
-                        <option>HTML</option>
-                        <option>CSS</option>
-                    </select>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/dracula.css" />
+    <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/modulos/input.css" />
+    <link rel="stylesheet" href="./assets/css/modulos/button.css" />
+    <link rel="stylesheet" href="./assets/css/modulos/menu-icon.css" />
+    <link rel="stylesheet" href="./assets/css/modulos/code-editor.css" />
+    <link rel="stylesheet" href="./assets/css/modulos/user.css" />
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/helpers.css" />
+    <link rel="stylesheet" href="./assets/css/paginas/home.css" />
+    <link rel="stylesheet" href="./assets/css/aside.css" />
+    <link rel="stylesheet" href="./assets/css/menu.css" />
+  </head>
 
-                    <input class="cor-projeto" type="color" value="#6BD1FF">
+  <body>
+    <header class="header container">
+      <h1 class="header__title">
+        <a class="header__logo" href="./index.html">
+          <img src="./assets/img/logo-aluraDev.svg" alt="Logo Alura Dev" />
+        </a>
+      </h1>
 
-                    <input type="submit" class="salvar-projeto" value="Salvar Projeto">
+      <input class="header__search" type="search" placeholder="Busque por algo" />
 
-                </div>
-            </form>
-        </main>
-    </body>
+      <div class="header__icons">
+        <button id="botaoBusca" class="icon__search button button--icon">
+          <img src="./assets/img/icons/icone-search.svg" alt="busca" />
+        </button>
+        <button id="botaoMenu" class="icon__menu button button--icon">
+          <span class="icon__menu__mobile"></span>
+        </button>
+      </div>
+
+      <div class="user__container">
+        <div class="header__user user">
+          <div class="user__thumb"></div>
+          <h3 class="user__name">Desenvolvedora Luana</h3>
+        </div>
+      </div>
+    </header>
+
+    <section class="home__main container">
+      <nav class="menu">
+        <h2 class="menu__title">Menu</h2>
+        <ul class="menu__list">
+          <li class="menu__item">
+            <a class="menu__link link--active" href="./index.html">
+              <div class="menu__icon">
+                <img
+                  src="./assets/img/icons/icon-code.svg"
+                  alt="Editor de código"
+                />
+              </div>
+              Editor de Código
+            </a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link ativo" href="./comunidade.html">
+              <div class="menu__icon">
+                <img
+                  src="./assets/img/icons/icon-community.svg"
+                  alt="Comunidade"
+                />
+              </div>
+              Comunidade
+            </a>
+          </li>
+        </ul>
+        <div class="menu__user user">
+          <div class="user__thumb"></div>
+          <h3 class="user__name">Desenvolvedor Luana</h3>
+        </div>
+      </nav>
+
+      <div id="searchBar" class="main__search">
+        <input type="search" placeholder="Busque por algo" class="search__bar" />
+        <button id="closeBusca" class="search__button button button--icon">
+          <img src="./assets/img/icons/icon-close.svg" alt="fechar busca" />
+        </button>
+      </div>
+
+      <section class="editor">
+        <div id="editorContainer" class="editor__container">
+          <code class="editor__code hljs" contenteditable="true"  aria-label="editor"
+          ></code>
+
+          <div class="dots">
+            <span class="dot dot--red"></span>
+            <span class="dot dot--yellow"></span>
+            <span class="dot dot--green"></span>
+          </div>
+        </div>
+        <button id="chooseLang" class="editor__button button button--outline">
+          Visualizar com o highlight
+        </button>
+      </section>
+
+      <aside class="project">
+        <div class="project__info">
+          <h2 class="project__title">Seu projeto</h2>
+          <input type="text" id="project__name" placeholder="Nome do seu projeto" data-title />
+          <textarea class="input" id="project__description" rows="5" placeholder="Descrição do projeto" data-description ></textarea>
+        </div>
+        <div class="project__settings">
+          <h2 class="project__title">Personalização</h2>
+          <select id="codeLang" data-codeLang>
+            <option value="Javascript">Javascript</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+          </select>
+
+          <input id="editorColor" type="color" value="#6bd1ff" class="project__color" data-color />
+        </div>
+        <button data-save-btn class="project__button button button--fill"> Salvar projeto </button>
+      </aside>
+    </section>
+    <script src="./assets/js/menu-Mobile.js"></script>
+    <script src="./assets/js/editor-color.js"></script>
+    <script src="./assets/js/salvaDados.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script src="./assets/js/highlight.js"></script>
+  </body>
 </html>
